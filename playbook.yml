@@ -17,8 +17,8 @@
       # msg: "{{v}}"
       msg: "{{df.stdout_lines}}"
 
-  - name: 'Check https installed'
-    command: service httpd status
+  - name: Install Apache
+    yum: name=httpd state=present
     register: command_output
     notify: 'Echo output'
 
