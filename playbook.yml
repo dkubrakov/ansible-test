@@ -1,0 +1,30 @@
+---
+- name: 'Test connectivity to target servers'
+  hosts: cent
+  vars: 
+    v: 'Var V'
+
+  tasks:
+  - name: 'Ping'
+    ping:
+
+  - name: 'Execute a command to display disk size on all webservers'
+    command: 'df -h'
+    register: df
+
+  - debug:
+      # var: v
+      # msg: "{{v}}"
+      msg: "{{df.stdout_lines}}"
+
+  - name: 'Check https installed'
+    command: service httpd status
+    register: command_output
+    notify: 'Echo output'
+
+  handlers:
+  - name: 'Echo output'
+    debug:
+      msg: "{{ command_output }}"
+
+# comment  
