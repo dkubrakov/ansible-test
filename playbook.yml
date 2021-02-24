@@ -1,6 +1,6 @@
 ---
 - name: 'Test connectivity to target servers'
-  hosts: cent
+  hosts: raeget1
   vars: 
     v: 'Var V'
 
